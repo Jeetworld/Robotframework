@@ -16,6 +16,7 @@ THREE
     @{listname}  create list  111  'Hello How are you'  4.55  56  "HELLO"   #creating list with @{listname} here
         FOR  ${i}  IN  @{listname}
             log to console  ${i}
+            log  ${i}
             exit for loop if  ${i}==4.55
         END
 

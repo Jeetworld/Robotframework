@@ -1,158 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0 (Python 3.11.4 on win32)" generated="20230728 13:31:22.965" rpa="false" schemaversion="3">
-<suite id="s1" name="LinksCount" source="C:\Users\Kamaljit_Singh\Python_Projects\RobotFramework\TestCases\LinksCount.robot">
-<test id="s1-t1" name="Count the links on page" line="8">
-<kw name="LaunchBrowser" library="Keywords">
-<var>${title}</var>
-<arg>${URL}</arg>
-<arg>${browser}</arg>
-<kw name="Open Browser" library="SeleniumLibrary">
-<arg>${appurl}</arg>
-<arg>${brwosername}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20230728 13:31:23.112" level="INFO">Opening browser 'chrome' to base url 'https://www.worldometers.info/geography/alphabetical-list-of-countries/'.</msg>
-<status status="PASS" starttime="20230728 13:31:23.111" endtime="20230728 13:31:28.275"/>
+<robot generator="Robot 6.0 (Python 3.11.4 on win32)" generated="20230728 17:53:36.242" rpa="false" schemaversion="3">
+<suite id="s1" name="ForLoop" source="C:\Automation\git_repo_projects\Robotframework\TestCases\ForLoop.robot">
+<test id="s1-t1" name="THREE" line="15">
+<kw name="Create List" library="BuiltIn">
+<var>@{listname}</var>
+<arg>111</arg>
+<arg>'Hello How are you'</arg>
+<arg>4.55</arg>
+<arg>56</arg>
+<arg>"HELLO"</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230728 17:53:36.378" level="INFO">@{listname} = [ 111 | 'Hello How are you' | 4.55 | 56 | "HELLO" ]</msg>
+<status status="PASS" starttime="20230728 17:53:36.378" endtime="20230728 17:53:36.378"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20230728 13:31:28.275" endtime="20230728 13:31:28.395"/>
-</kw>
-<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
-<arg>5 seconds</arg>
-<doc>Sets the implicit wait value used by Selenium.</doc>
-<status status="PASS" starttime="20230728 13:31:28.395" endtime="20230728 13:31:28.397"/>
-</kw>
-<kw name="Get Title" library="SeleniumLibrary">
-<var>${titleOfThePage}</var>
-<doc>Returns the title of the current page.</doc>
-<msg timestamp="20230728 13:31:28.409" level="INFO">${titleOfThePage} = List of Countries of the world in alphabetical order (A to Z) - Worldometer</msg>
-<status status="PASS" starttime="20230728 13:31:28.397" endtime="20230728 13:31:28.409"/>
-</kw>
-<msg timestamp="20230728 13:31:28.409" level="INFO">${title} = List of Countries of the world in alphabetical order (A to Z) - Worldometer</msg>
-<status status="PASS" starttime="20230728 13:31:23.111" endtime="20230728 13:31:28.409"/>
+<for flavor="IN">
+<var>${i}</var>
+<value>@{listname}</value>
+<iter>
+<var name="${i}">111</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230728 17:53:36.380" endtime="20230728 17:53:36.381"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>${title}</arg>
+<arg>${i}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20230728 13:31:28.410" level="INFO">List of Countries of the world in alphabetical order (A to Z) - Worldometer</msg>
-<status status="PASS" starttime="20230728 13:31:28.410" endtime="20230728 13:31:28.411"/>
+<msg timestamp="20230728 17:53:36.381" level="INFO">111</msg>
+<status status="PASS" starttime="20230728 17:53:36.381" endtime="20230728 17:53:36.381"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${title}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230728 13:31:28.412" endtime="20230728 13:31:28.413"/>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${i}==4.55</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20230728 17:53:36.381" endtime="20230728 17:53:36.382"/>
 </kw>
-<kw name="Get Element Count" library="SeleniumLibrary">
-<var>${size}</var>
-<arg>xpath://a</arg>
-<doc>Returns the number of elements matching ``locator``.</doc>
-<msg timestamp="20230728 13:31:28.466" level="INFO">${size} = 236</msg>
-<status status="PASS" starttime="20230728 13:31:28.414" endtime="20230728 13:31:28.466"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>"this is the count === ${size}"</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230728 13:31:28.466" endtime="20230728 13:31:28.467"/>
-</kw>
-<for flavor="IN RANGE">
-<var>${i}</var>
-<value>1</value>
-<value>${size}</value>
-<iter>
-<var name="${i}">1</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${linkTest}</var>
-<arg>xpath://a[${i}]</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20230728 13:31:28.530" level="INFO">${linkTest} = Learn more</msg>
-<status status="PASS" starttime="20230728 13:31:28.469" endtime="20230728 13:31:28.530"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${linkTest}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230728 13:31:28.530" endtime="20230728 13:31:28.531"/>
-</kw>
-<status status="PASS" starttime="20230728 13:31:28.469" endtime="20230728 13:31:28.531"/>
+<status status="PASS" starttime="20230728 17:53:36.380" endtime="20230728 17:53:36.382"/>
 </iter>
 <iter>
-<var name="${i}">2</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${linkTest}</var>
-<arg>xpath://a[${i}]</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20230728 13:31:28.562" level="INFO">${linkTest} = faq</msg>
-<status status="PASS" starttime="20230728 13:31:28.531" endtime="20230728 13:31:28.562"/>
-</kw>
+<var name="${i}">'Hello How are you'</var>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${linkTest}</arg>
+<arg>${i}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230728 13:31:28.563" endtime="20230728 13:31:28.564"/>
+<status status="PASS" starttime="20230728 17:53:36.382" endtime="20230728 17:53:36.382"/>
 </kw>
-<status status="PASS" starttime="20230728 13:31:28.531" endtime="20230728 13:31:28.564"/>
+<kw name="Log" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230728 17:53:36.383" level="INFO">'Hello How are you'</msg>
+<status status="PASS" starttime="20230728 17:53:36.382" endtime="20230728 17:53:36.383"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${i}==4.55</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20230728 17:53:36.383" endtime="20230728 17:53:36.383"/>
+</kw>
+<status status="PASS" starttime="20230728 17:53:36.382" endtime="20230728 17:53:36.383"/>
 </iter>
 <iter>
-<var name="${i}">3</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${linkTest}</var>
-<arg>xpath://a[${i}]</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20230728 13:31:28.593" level="INFO">${linkTest} = languages</msg>
-<status status="PASS" starttime="20230728 13:31:28.564" endtime="20230728 13:31:28.593"/>
-</kw>
+<var name="${i}">4.55</var>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${linkTest}</arg>
+<arg>${i}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230728 13:31:28.593" endtime="20230728 13:31:28.594"/>
+<status status="PASS" starttime="20230728 17:53:36.383" endtime="20230728 17:53:36.383"/>
 </kw>
-<status status="PASS" starttime="20230728 13:31:28.564" endtime="20230728 13:31:28.594"/>
+<kw name="Log" library="BuiltIn">
+<arg>${i}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230728 17:53:36.384" level="INFO">4.55</msg>
+<status status="PASS" starttime="20230728 17:53:36.383" endtime="20230728 17:53:36.384"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${i}==4.55</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<msg timestamp="20230728 17:53:36.384" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20230728 17:53:36.384" endtime="20230728 17:53:36.384"/>
+</kw>
+<status status="PASS" starttime="20230728 17:53:36.383" endtime="20230728 17:53:36.384"/>
 </iter>
-<iter>
-<var name="${i}">4</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${linkTest}</var>
-<arg>xpath://a[${i}]</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20230728 13:31:28.623" level="INFO">${linkTest} = contact</msg>
-<status status="PASS" starttime="20230728 13:31:28.595" endtime="20230728 13:31:28.623"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${linkTest}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230728 13:31:28.624" endtime="20230728 13:31:28.624"/>
-</kw>
-<status status="PASS" starttime="20230728 13:31:28.594" endtime="20230728 13:31:28.624"/>
-</iter>
-<iter>
-<var name="${i}">5</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${linkTest}</var>
-<arg>xpath://a[${i}]</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20230728 13:31:33.875" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg timestamp="20230728 13:31:33.875" level="FAIL">Element with locator 'xpath://a[5]' not found.</msg>
-<status status="FAIL" starttime="20230728 13:31:28.625" endtime="20230728 13:31:33.885"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${linkTest}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20230728 13:31:33.886" endtime="20230728 13:31:33.886"/>
-</kw>
-<status status="FAIL" starttime="20230728 13:31:28.625" endtime="20230728 13:31:33.886"/>
-</iter>
-<status status="FAIL" starttime="20230728 13:31:28.469" endtime="20230728 13:31:33.886"/>
+<status status="PASS" starttime="20230728 17:53:36.380" endtime="20230728 17:53:36.384"/>
 </for>
-<status status="FAIL" starttime="20230728 13:31:23.110" endtime="20230728 13:31:33.887">Element with locator 'xpath://a[5]' not found.</status>
+<status status="PASS" starttime="20230728 17:53:36.378" endtime="20230728 17:53:36.385"/>
 </test>
-<status status="FAIL" starttime="20230728 13:31:22.966" endtime="20230728 13:31:33.889"/>
+<status status="PASS" starttime="20230728 17:53:36.243" endtime="20230728 17:53:36.386"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="LinksCount">LinksCount</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="ForLoop">ForLoop</stat>
 </suite>
 </statistics>
 <errors>
